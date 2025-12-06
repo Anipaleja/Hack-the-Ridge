@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Outer circle -->
+    <item>
+        <shape android:shape="oval">
+            <size android:width="260dp" android:height="260dp" />
+            <solid android:color="@color/sensory_button_outer" />
+        </shape>
+    </item>
+
+    <!-- Inner circle with subtle colored ring -->
+    <item android:inset="24dp">
+        <shape android:shape="oval">
+            <stroke android:width="4dp" android:color="#8C88F0" />
+            <solid android:color="@color/sensory_button_inner" />
+        </shape>
+    </item>
+</layer-list>

@@ -7,6 +7,21 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
+    <!-- Ambient sound level measurement -->
+    <string name="start_measuring">Start measuring</string>
+    <string name="stop_measuring">Stop measuring</string>
+    <string name="measurement_initial">Press &quot;Start measuring&quot; and walk into the room to see the sound level.</string>
+    <string name="measurement_running">Measuring ambient sound level...</string>
+    <string name="measurement_stopped">Measurement stopped.</string>
+    <string name="current_level_db">Current level: %1$.1f dB (relative)</string>
+    <string name="permission_denied">Microphone permission denied. Enable it in system settings to measure sound level.</string>
+
+    <!-- High volume alerts -->
+    <string name="high_volume_channel_name">High volume alerts</string>
+    <string name="high_volume_channel_description">Alerts when ambient sound exceeds the configured threshold (around 60 dB).</string>
+    <string name="high_volume_notification_title">High noise level detected</string>
+    <string name="high_volume_notification_text">Measured volume has exceeded 60 dB (approx %.1f dB).</string>
+
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus

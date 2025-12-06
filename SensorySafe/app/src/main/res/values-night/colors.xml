@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- SensorySafe palette for dark mode -->
+    <!-- Top purple area -->
+    <color name="sensory_primary_blue">#65659B</color>
+    <!-- Main dark background (bottom area and root) -->
+    <color name="sensory_light_grey">#110F14</color>
+    <!-- Top bar and general dark grey elements -->
+    <color name="sensory_topbar_grey">#4A4A50</color>
+    <!-- Bottom navigation bar background -->
+    <color name="sensory_bottom_nav">#4A4A50</color>
+
+    <!-- Measurement button colors (dark mode) -->
+    <color name="sensory_button_outer">#DADCF0</color>
+    <color name="sensory_button_inner">#C7CAE6</color>
+</resources>
