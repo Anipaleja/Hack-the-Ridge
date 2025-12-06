@@ -3351,7 +3351,6 @@ id list_item
 id locale
 id logo_container
 id logo_icon
-id logo_text
 id ltr
 id m3_side_sheet
 id marquee
@@ -3417,7 +3416,7 @@ id nav_controller_view_tag
 id nav_graph
 id nav_host_fragment_container
 id nav_host_fragment_content_main
-id nav_maps
+id nav_library_helper
 id nav_meter
 id nav_threshold
 id navigation_bar_item_active_indicator_view
@@ -3591,7 +3590,6 @@ id textview_threshold_value
 id time
 id title
 id titleDividerNoCustom
-id title_sensorysafe
 id title_template
 id toggle
 id toolbar
@@ -3893,6 +3891,8 @@ string high_volume_notification_title
 string high_volume_sms_text
 string icon_content_description
 string item_view_role_description
+string library_helper_below_threshold
+string library_helper_title
 string lorem_ipsum
 string m3_exceed_max_badge_text_suffix
 string m3_ref_typeface_brand_medium

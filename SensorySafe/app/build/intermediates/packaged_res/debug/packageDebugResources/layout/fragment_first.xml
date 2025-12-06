@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/top_bar"
         android:layout_width="0dp"
-        android:layout_height="72dp"
+        android:layout_height="56dp"
         android:background="@color/sensory_topbar_grey"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,16 +35,6 @@
                 android:tint="@android:color/black"
                 android:contentDescription="@string/app_name"
                 android:scaleType="centerInside" />
-
-            <TextView
-                android:id="@+id/logo_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/app_name"
-                android:textColor="@android:color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:paddingTop="2dp" />
         </LinearLayout>
 
         <ImageButton
@@ -61,20 +51,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- App title -->
-    <TextView
-        android:id="@+id/title_sensorysafe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/app_name"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@id/top_bar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Top blue background area -->
     <View
@@ -149,24 +125,11 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_sensorysafe">
+        app:layout_constraintTop_toBottomOf="@id/top_bar">
 
+        <!-- Library helper (person with flag) -->
         <LinearLayout
-            android:id="@+id/nav_maps"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:src="@android:drawable/ic_dialog_email"
-                android:tint="@android:color/black"
-                android:contentDescription="Maps" />
-        </LinearLayout>
-
-        <LinearLayout
+            android:id="@+id/nav_library_helper"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -177,9 +140,10 @@
                 android:layout_height="28dp"
                 android:src="@android:drawable/ic_menu_myplaces"
                 android:tint="@android:color/black"
-                android:contentDescription="People" />
+                android:contentDescription="Nearest library helper" />
         </LinearLayout>
 
+        <!-- Decibel meter detail (eye icon) -->
         <LinearLayout
             android:id="@+id/nav_meter"
             android:layout_width="0dp"
@@ -195,20 +159,7 @@
                 android:contentDescription="Decibel meter" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:src="@android:drawable/ic_menu_upload"
-                android:tint="@android:color/black"
-                android:contentDescription="Upload" />
-        </LinearLayout>
-
+        <!-- Threshold settings (gear icon) -->
         <LinearLayout
             android:id="@+id/nav_threshold"
             android:layout_width="0dp"

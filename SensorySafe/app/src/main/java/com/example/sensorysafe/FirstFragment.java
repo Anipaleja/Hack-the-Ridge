@@ -144,9 +144,7 @@ public class FirstFragment extends Fragment {
             }
         });
 
-        // Bottom navigation: maps, meter (current), and threshold settings.
-        binding.navMaps.setOnClickListener(v -> openMapsForLibraries());
-
+        // Top navigation: library helper, meter details, and threshold settings.
         binding.navLibraryHelper.setOnClickListener(v -> {
             double threshold = AlertSettings.getAlertThresholdRelativeDb(requireContext());
             double lastLevel = AlertSettings.getLastMeasuredRelativeDb(requireContext());
@@ -373,11 +371,17 @@ public class FirstFragment extends Fragment {
     }
 
     private void openMapsForLibraries() {
-        Uri gmmIntentUri = Uri.parse("geo:0,0?q=library");
+        // Prefer the Google Maps app in navigation mode to the nearest library.
+        Uri gmmIntentUri = Uri.parse("google.navigation:q=library&mode=w");
         android.content.Intent mapIntent = new android.content.Intent(android.content.Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         if (mapIntent.resolveActivity(requireContext().getPackageManager()) != null) {
             startActivity(mapIntent);
+        } else {
+            // Fallback: open Google Maps in the browser searching for nearby libraries.
+            Uri webUri = Uri.parse("https://www.google.com/maps/search/library/");
+            android.content.Intent webIntent = new android.content.Intent(android.content.Intent.ACTION_VIEW, webUri);
+            startActivity(webIntent);
         }
     }
 

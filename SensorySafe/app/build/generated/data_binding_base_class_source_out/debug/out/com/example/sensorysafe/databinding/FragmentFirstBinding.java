@@ -44,10 +44,7 @@ public final class FragmentFirstBinding implements ViewBinding {
   public final ImageView logoIcon;
 
   @NonNull
-  public final TextView logoText;
-
-  @NonNull
-  public final LinearLayout navMaps;
+  public final LinearLayout navLibraryHelper;
 
   @NonNull
   public final LinearLayout navMeter;
@@ -59,9 +56,6 @@ public final class FragmentFirstBinding implements ViewBinding {
   public final TextView textviewFirst;
 
   @NonNull
-  public final TextView titleSensorysafe;
-
-  @NonNull
   public final View topBackground;
 
   @NonNull
@@ -70,11 +64,10 @@ public final class FragmentFirstBinding implements ViewBinding {
   private FragmentFirstBinding(@NonNull ConstraintLayout rootView, @NonNull View bottomBackground,
       @NonNull LinearLayout bottomNav, @NonNull ImageButton buttonFirst,
       @NonNull ImageButton buttonMenu, @NonNull View diagonalOverlay,
-      @NonNull LinearLayout logoContainer, @NonNull ImageView logoIcon, @NonNull TextView logoText,
-      @NonNull LinearLayout navMaps, @NonNull LinearLayout navMeter,
+      @NonNull LinearLayout logoContainer, @NonNull ImageView logoIcon,
+      @NonNull LinearLayout navLibraryHelper, @NonNull LinearLayout navMeter,
       @NonNull LinearLayout navThreshold, @NonNull TextView textviewFirst,
-      @NonNull TextView titleSensorysafe, @NonNull View topBackground,
-      @NonNull ConstraintLayout topBar) {
+      @NonNull View topBackground, @NonNull ConstraintLayout topBar) {
     this.rootView = rootView;
     this.bottomBackground = bottomBackground;
     this.bottomNav = bottomNav;
@@ -83,12 +76,10 @@ public final class FragmentFirstBinding implements ViewBinding {
     this.diagonalOverlay = diagonalOverlay;
     this.logoContainer = logoContainer;
     this.logoIcon = logoIcon;
-    this.logoText = logoText;
-    this.navMaps = navMaps;
+    this.navLibraryHelper = navLibraryHelper;
     this.navMeter = navMeter;
     this.navThreshold = navThreshold;
     this.textviewFirst = textviewFirst;
-    this.titleSensorysafe = titleSensorysafe;
     this.topBackground = topBackground;
     this.topBar = topBar;
   }
@@ -162,15 +153,9 @@ public final class FragmentFirstBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.logo_text;
-      TextView logoText = ViewBindings.findChildViewById(rootView, id);
-      if (logoText == null) {
-        break missingId;
-      }
-
-      id = R.id.nav_maps;
-      LinearLayout navMaps = ViewBindings.findChildViewById(rootView, id);
-      if (navMaps == null) {
+      id = R.id.nav_library_helper;
+      LinearLayout navLibraryHelper = ViewBindings.findChildViewById(rootView, id);
+      if (navLibraryHelper == null) {
         break missingId;
       }
 
@@ -192,12 +177,6 @@ public final class FragmentFirstBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.title_sensorysafe;
-      TextView titleSensorysafe = ViewBindings.findChildViewById(rootView, id);
-      if (titleSensorysafe == null) {
-        break missingId;
-      }
-
       id = R.id.top_background;
       View topBackground = ViewBindings.findChildViewById(rootView, id);
       if (topBackground == null) {
@@ -211,8 +190,8 @@ public final class FragmentFirstBinding implements ViewBinding {
       }
 
       return new FragmentFirstBinding((ConstraintLayout) rootView, bottomBackground, bottomNav,
-          buttonFirst, buttonMenu, diagonalOverlay, logoContainer, logoIcon, logoText, navMaps,
-          navMeter, navThreshold, textviewFirst, titleSensorysafe, topBackground, topBar);
+          buttonFirst, buttonMenu, diagonalOverlay, logoContainer, logoIcon, navLibraryHelper,
+          navMeter, navThreshold, textviewFirst, topBackground, topBar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

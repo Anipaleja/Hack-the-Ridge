@@ -3350,7 +3350,6 @@ int id list_item 0x7f0800fa
 int id locale 0x7f0800fb
 int id logo_container 0x7f0800fc
 int id logo_icon 0x7f0800fd
-int id logo_text 0x7f0800fe
 int id ltr 0x7f0800ff
 int id m3_side_sheet 0x7f080100
 int id marquee 0x7f080101
@@ -3416,7 +3415,7 @@ int id nav_controller_view_tag 0x7f08013c
 int id nav_graph 0x7f08013d
 int id nav_host_fragment_container 0x7f08013e
 int id nav_host_fragment_content_main 0x7f08013f
-int id nav_maps 0x7f080140
+int id nav_library_helper 0x7f080218
 int id nav_meter 0x7f080141
 int id nav_threshold 0x7f080142
 int id navigation_bar_item_active_indicator_view 0x7f080143
@@ -3590,7 +3589,6 @@ int id textview_threshold_value 0x7f0801e7
 int id time 0x7f0801e8
 int id title 0x7f0801e9
 int id titleDividerNoCustom 0x7f0801ea
-int id title_sensorysafe 0x7f080212
 int id title_template 0x7f0801eb
 int id toggle 0x7f0801ec
 int id toolbar 0x7f0801ed
@@ -3892,6 +3890,8 @@ int string high_volume_notification_title 0x7f110036
 int string high_volume_sms_text 0x7f1100b8
 int string icon_content_description 0x7f110037
 int string item_view_role_description 0x7f110038
+int string library_helper_below_threshold 0x7f1100c2
+int string library_helper_title 0x7f1100c3
 int string lorem_ipsum 0x7f110039
 int string m3_exceed_max_badge_text_suffix 0x7f11003a
 int string m3_ref_typeface_brand_medium 0x7f11003b

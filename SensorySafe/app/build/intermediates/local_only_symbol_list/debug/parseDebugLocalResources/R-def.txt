@@ -28,10 +28,9 @@ id diagonal_overlay
 id fab
 id logo_container
 id logo_icon
-id logo_text
 id nav_graph
 id nav_host_fragment_content_main
-id nav_maps
+id nav_library_helper
 id nav_meter
 id nav_threshold
 id slider_alert_threshold
@@ -42,7 +41,6 @@ id textview_first
 id textview_set_your_own
 id textview_threshold_label
 id textview_threshold_value
-id title_sensorysafe
 id toolbar
 id top_background
 id top_bar
@@ -67,6 +65,8 @@ string high_volume_channel_name
 string high_volume_notification_text
 string high_volume_notification_title
 string high_volume_sms_text
+string library_helper_below_threshold
+string library_helper_title
 string lorem_ipsum
 string measurement_initial
 string measurement_running

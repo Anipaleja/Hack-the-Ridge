@@ -8,14 +8,6 @@
         "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/mipmap-anydpi-v26/ic_launcher_round.xml"
-    },
-    {
-        "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/mipmap-xxhdpi/ic_launcher.webp"
-    },
-    {
         "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/mipmap-xxxhdpi/ic_launcher.webp"
     },
@@ -24,16 +16,44 @@
         "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/xml/backup_rules.xml"
     },
     {
-        "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/layout_fragment_first.xml.flat",
-        "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/layout/fragment_first.xml"
-    },
-    {
         "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/drawable_ic_launcher_background.xml.flat",
         "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/drawable/ic_launcher_background.xml"
     },
     {
+        "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/layout_fragment_first.xml.flat",
+        "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/layout/fragment_first.xml"
+    },
+    {
+        "merged": "com.example.sensorysafe.app-debug-43:/layout_fragment_first.xml.flat",
+        "source": "com.example.sensorysafe.app-main-45:/layout/fragment_first.xml"
+    },
+    {
         "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/mipmap-hdpi_ic_launcher.webp.flat",
         "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/layout_fragment_meter_detail.xml.flat",
+        "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/layout/fragment_meter_detail.xml"
     },
     {
         "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/mipmap-mdpi_ic_launcher.webp.flat",
@@ -56,14 +76,6 @@
         "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/layout/fragment_second.xml"
     },
     {
-        "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/mipmap-xhdpi/ic_launcher.webp"
-    },
-    {
-        "merged": "com.example.sensorysafe.app-debug-43:/layout_fragment_meter_detail.xml.flat",
-        "source": "com.example.sensorysafe.app-main-45:/layout/fragment_meter_detail.xml"
-    },
-    {
         "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/drawable_measurement_button_background.xml.flat",
         "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/drawable/measurement_button_background.xml"
     },
@@ -76,16 +88,8 @@
         "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/mipmap-xxxhdpi/ic_launcher_round.webp"
-    },
-    {
         "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/layout_activity_main.xml.flat",
         "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/layout/activity_main.xml"
-    },
-    {
-        "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
         "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/mipmap-anydpi-v26_ic_launcher.xml.flat",
