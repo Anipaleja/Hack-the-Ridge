@@ -48,7 +48,7 @@ public class FirstFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.textviewFirst.setText(R.string.measurement_initial);
-        binding.buttonFirst.setTextDirection(R.string.start_measuring);
+        binding.buttonFirst.setText(R.string.start_measuring);
 
         binding.buttonFirst.setOnClickListener(v -> {
             if (isMeasuring) {
@@ -101,7 +101,7 @@ public class FirstFragment extends Fragment {
 
         isMeasuring = true;
         hasAlertedHighVolume = false;
-        binding.buttonFirst.setTextDirection(R.string.stop_measuring);
+        binding.buttonFirst.setText(R.string.stop_measuring);
         binding.textviewFirst.setText(R.string.measurement_running);
 
         // Load the current user-configured alert threshold once for this measurement session.
@@ -165,7 +165,7 @@ public class FirstFragment extends Fragment {
         }
 
         if (binding != null) {
-            binding.buttonFirst.setTextDirection(R.string.start_measuring);
+            binding.buttonFirst.setText(R.string.start_measuring);
             binding.textviewFirst.setText(R.string.measurement_stopped);
         }
     }
