@@ -29,10 +29,28 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonSecond.setOnClickListener(v ->
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment)
-        );
+        // Initialize slider with the current stored threshold (relative 0-100 scale).
+        float currentThreshold = (float) AlertSettings.getAlertThresholdRelativeDb(requireContext());
+        binding.sliderAlertThreshold.setValue(currentThreshold);
+        updateThresholdLabel(currentThreshold);
+
+        binding.sliderAlertThreshold.addOnChangeListener((slider, value, fromUser) -> {
+            updateThresholdLabel(value);
+        });
+
+        // "Save now" button: persist threshold and navigate back to the meter.
+        binding.buttonSecond.setOnClickListener(v -> {
+            float value = binding.sliderAlertThreshold.getValue();
+            AlertSettings.setAlertThresholdRelativeDb(requireContext(), value);
+            NavHostFragment.findNavController(SecondFragment.this)
+                    .navigate(R.id.action_SecondFragment_to_FirstFragment);
+        });
+    }
+
+    private void updateThresholdLabel(float value) {
+        // Display as an approximate dB value (0-100 scale).
+        String label = getString(R.string.threshold_display_value, value);
+        binding.textviewThresholdValue.setText(label);
     }
 
     @Override

@@ -2,4 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- SensorySafe palette approximating the provided UI (light mode) -->
+    <color name="sensory_primary_blue">#7EC2F4</color>
+    <color name="sensory_light_grey">#F2F3FA</color>
+    <color name="sensory_topbar_grey">#D8DBE6</color>
+    <color name="sensory_bottom_nav">#7EC2F4</color>
+
+    <!-- Measurement button colors (light mode) -->
+    <color name="sensory_button_outer">#DFE2F4</color>
+    <color name="sensory_button_inner">#D3D7F2</color>
 </resources>
