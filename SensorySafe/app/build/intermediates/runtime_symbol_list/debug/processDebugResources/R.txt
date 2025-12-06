@@ -3101,6 +3101,7 @@ int id CTRL 0x7f080003
 int id FUNCTION 0x7f080004
 int id FirstFragment 0x7f080005
 int id META 0x7f080006
+int id MeterDetailFragment 0x7f080213
 int id NO_DEBUG 0x7f080007
 int id SHIFT 0x7f080008
 int id SHOW_ALL 0x7f080009
@@ -3147,6 +3148,7 @@ int id accessibility_custom_action_9 0x7f080031
 int id actionDown 0x7f080032
 int id actionDownUp 0x7f080033
 int id actionUp 0x7f080034
+int id action_FirstFragment_to_MeterDetailFragment 0x7f080214
 int id action_FirstFragment_to_SecondFragment 0x7f080035
 int id action_SecondFragment_to_FirstFragment 0x7f080036
 int id action_bar 0x7f080037
@@ -3569,9 +3571,12 @@ int id textSpacerNoButtons 0x7f0801d7
 int id textSpacerNoTitle 0x7f0801d8
 int id textStart 0x7f0801d9
 int id textTop 0x7f0801da
+int id text_category 0x7f080215
 int id text_input_end_icon 0x7f0801db
 int id text_input_error_icon 0x7f0801dc
 int id text_input_start_icon 0x7f0801dd
+int id text_last_level 0x7f080216
+int id text_title_meter 0x7f080217
 int id textinput_counter 0x7f0801de
 int id textinput_error 0x7f0801df
 int id textinput_helper_text 0x7f0801e0
@@ -3585,6 +3590,7 @@ int id textview_threshold_value 0x7f0801e7
 int id time 0x7f0801e8
 int id title 0x7f0801e9
 int id titleDividerNoCustom 0x7f0801ea
+int id title_sensorysafe 0x7f080212
 int id title_template 0x7f0801eb
 int id toggle 0x7f0801ec
 int id toolbar 0x7f0801ed
@@ -3758,6 +3764,7 @@ int layout design_navigation_menu_item 0x7f0b002b
 int layout design_text_input_end_icon 0x7f0b002c
 int layout design_text_input_start_icon 0x7f0b002d
 int layout fragment_first 0x7f0b002e
+int layout fragment_meter_detail 0x7f0b006d
 int layout fragment_second 0x7f0b002f
 int layout m3_alert_dialog 0x7f0b0030
 int layout m3_alert_dialog_actions 0x7f0b0031
@@ -3857,6 +3864,8 @@ int string androidx_startup 0x7f11001c
 int string app_name 0x7f11001d
 int string appbar_scrolling_view_behavior 0x7f11001e
 int string automatic_alerter_label 0x7f11001f
+int string ble_emergency_sms 0x7f1100b9
+int string ble_warn_sms 0x7f1100ba
 int string bottom_sheet_behavior 0x7f110020
 int string bottomsheet_action_collapse 0x7f110021
 int string bottomsheet_action_expand 0x7f110022
@@ -3880,6 +3889,7 @@ int string high_volume_channel_description 0x7f110033
 int string high_volume_channel_name 0x7f110034
 int string high_volume_notification_text 0x7f110035
 int string high_volume_notification_title 0x7f110036
+int string high_volume_sms_text 0x7f1100b8
 int string icon_content_description 0x7f110037
 int string item_view_role_description 0x7f110038
 int string lorem_ipsum 0x7f110039
@@ -3924,6 +3934,13 @@ int string material_timepicker_text_input_mode_description 0x7f11005f
 int string measurement_initial 0x7f110060
 int string measurement_running 0x7f110061
 int string measurement_stopped 0x7f110062
+int string meter_category_danger 0x7f1100bb
+int string meter_category_loud 0x7f1100bc
+int string meter_category_noisy 0x7f1100bd
+int string meter_category_quiet 0x7f1100be
+int string meter_detail_category_label 0x7f1100bf
+int string meter_detail_last_level 0x7f1100c0
+int string meter_detail_title 0x7f1100c1
 int string mtrl_badge_numberless_content_description 0x7f110063
 int string mtrl_checkbox_button_icon_path_checked 0x7f110064
 int string mtrl_checkbox_button_icon_path_group_name 0x7f110065

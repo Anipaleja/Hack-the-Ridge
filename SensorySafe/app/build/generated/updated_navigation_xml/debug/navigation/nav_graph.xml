@@ -13,6 +13,9 @@ app:startDestination="@id/FirstFragment" >
     <action
         android:id="@+id/action_FirstFragment_to_SecondFragment"
         app:destination="@id/SecondFragment" />
+    <action
+        android:id="@+id/action_FirstFragment_to_MeterDetailFragment"
+        app:destination="@id/MeterDetailFragment" />
 
 </fragment>
 <fragment
@@ -26,4 +29,9 @@ app:startDestination="@id/FirstFragment" >
         app:destination="@id/FirstFragment" />
 
 </fragment>
+<fragment
+    android:id="@+id/MeterDetailFragment"
+    android:name="com.example.sensorysafe.MeterDetailFragment"
+    android:label="@string/meter_detail_title"
+    tools:layout="@layout/fragment_meter_detail" />
 </navigation>

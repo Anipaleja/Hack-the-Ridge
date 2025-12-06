@@ -12,6 +12,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCallback;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
+import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothManager;
+import android.bluetooth.le.BluetoothLeScanner;
+import android.bluetooth.le.ScanCallback;
+import android.bluetooth.le.ScanFilter;
+import android.bluetooth.le.ScanResult;
+import android.bluetooth.le.ScanSettings;
+
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -27,18 +41,83 @@ public class FirstFragment extends Fragment {
     private static final int SAMPLE_RATE = 44100;
     private static final int PERMISSION_REQUEST_RECORD_AUDIO = 1001;
     private static final int PERMISSION_REQUEST_SEND_SMS = 1002;
+    private static final int PERMISSION_REQUEST_BLE = 1003;
     // Default threshold in the same relative 0-100 scale used below.
     // The actual value used at runtime is loaded from AlertSettings.
     private static final double DEFAULT_ALERT_DB_THRESHOLD = AlertSettings.DEFAULT_ALERT_THRESHOLD_RELATIVE_DB;
 
     private static final String ALERT_PHONE_NUMBER = "6478233878"; // 647-823-3878
 
+    // BLE constants for FidgetToy
+    private static final String FIDGET_DEVICE_NAME = "FidgetToy";
+    private static final java.util.UUID FIDGET_CHARACTERISTIC_UUID = java.util.UUID.fromString("0000A001-0000-1000-8000-00805F9B34FB");
+
     private FragmentFirstBinding binding;
     private AudioRecord audioRecord;
     private Thread recordingThread;
     private boolean isMeasuring = false;
     private boolean hasAlertedHighVolume = false;
-    private Double pendingSmsAlertDb = null;
+
+    // Generic pending SMS text for permission flow
+    private String pendingSmsText = null;
+
+    // BLE state
+    private BluetoothLeScanner bleScanner;
+    private BluetoothGatt bluetoothGatt;
+    private boolean isScanningBle = false;
+
+    private final ScanCallback fidgetScanCallback = new ScanCallback() {
+        @Override
+        public void onScanResult(int callbackType, ScanResult result) {
+            BluetoothDevice device = result.getDevice();
+            if (device != null && FIDGET_DEVICE_NAME.equals(device.getName())) {
+                // Stop scanning once we find the FidgetToy device.
+                stopFidgetToyBleScan();
+                connectToFidgetToy(device);
+            }
+        }
+    };
+
+    private final BluetoothGattCallback fidgetGattCallback = new BluetoothGattCallback() {
+        @Override
+        public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
+            if (newState == BluetoothGatt.STATE_CONNECTED) {
+                gatt.discoverServices();
+            } else if (newState == BluetoothGatt.STATE_DISCONNECTED) {
+                bluetoothGatt = null;
+                // Optionally restart scanning to reconnect.
+                startFidgetToyBleScanIfPermitted();
+            }
+        }
+
+        @Override
+        public void onServicesDiscovered(BluetoothGatt gatt, int status) {
+            for (BluetoothGattService service : gatt.getServices()) {
+                BluetoothGattCharacteristic characteristic = service.getCharacteristic(FIDGET_CHARACTERISTIC_UUID);
+                if (characteristic != null) {
+                    // Enable notifications on the characteristic.
+                    gatt.setCharacteristicNotification(characteristic, true);
+                    BluetoothGattDescriptor descriptor = characteristic.getDescriptor(
+                            java.util.UUID.fromString("00002902-0000-1000-8000-00805f9b34fb"));
+                    if (descriptor != null) {
+                        descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
+                        gatt.writeDescriptor(descriptor);
+                    }
+                    break;
+                }
+            }
+        }
+
+        @Override
+        public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
+            if (FIDGET_CHARACTERISTIC_UUID.equals(characteristic.getUuid())) {
+                byte[] value = characteristic.getValue();
+                if (value == null) return;
+                String text = new String(value).trim().toLowerCase(java.util.Locale.US);
+                handleFidgetToyMessage(text);
+            }
+        }
+    };
 
     @Override
     public View onCreateView(
@@ -68,14 +147,30 @@ public class FirstFragment extends Fragment {
         // Bottom navigation: maps, meter (current), and threshold settings.
         binding.navMaps.setOnClickListener(v -> openMapsForLibraries());
 
-        binding.navMeter.setOnClickListener(v -> {
-            // Already on the meter screen; no navigation needed for now.
-            // Could scroll to top or provide feedback if desired.
+        binding.navLibraryHelper.setOnClickListener(v -> {
+            double threshold = AlertSettings.getAlertThresholdRelativeDb(requireContext());
+            double lastLevel = AlertSettings.getLastMeasuredRelativeDb(requireContext());
+            if (lastLevel >= threshold) {
+                openMapsForLibraries();
+            } else {
+                new AlertDialog.Builder(requireContext())
+                        .setTitle(getString(R.string.library_helper_title))
+                        .setMessage(getString(R.string.library_helper_below_threshold))
+                        .setPositiveButton(android.R.string.ok, null)
+                        .show();
+            }
         });
+
+        binding.navMeter.setOnClickListener(v ->
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_MeterDetailFragment));
 
         binding.navThreshold.setOnClickListener(v ->
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_SecondFragment));
+
+        // Start scanning for the FidgetToy BLE device.
+        startFidgetToyBleScanIfPermitted();
     }
 
     private void startMeasuring() {
@@ -156,6 +251,8 @@ public class FirstFragment extends Fragment {
                                     binding.textviewFirst.setText(
                                             getString(R.string.current_level_db, displayDb)
                                     );
+                                    // Persist last measured value for the detailed meter page.
+                                    AlertSettings.setLastMeasuredRelativeDb(requireContext(), displayDb);
                                 }
                             });
                         }
@@ -254,21 +351,24 @@ public class FirstFragment extends Fragment {
     }
 
     private void sendHighVolumeSms(double approxDb) {
+        String message = getString(R.string.high_volume_sms_text, approxDb);
+        sendAlertSms(message);
+    }
+
+    private void sendAlertSms(String message) {
         if (getContext() == null) {
             return;
         }
 
-        // Check runtime SEND_SMS permission.
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.SEND_SMS)
                 != PackageManager.PERMISSION_GRANTED) {
-            // Remember this value so we can send after the user grants permission.
-            pendingSmsAlertDb = approxDb;
+            // Remember this message so we can send after the user grants permission.
+            pendingSmsText = message;
             requestPermissions(new String[]{Manifest.permission.SEND_SMS}, PERMISSION_REQUEST_SEND_SMS);
             return;
         }
 
         SmsManager smsManager = SmsManager.getDefault();
-        String message = getString(R.string.high_volume_sms_text, approxDb);
         smsManager.sendTextMessage(ALERT_PHONE_NUMBER, null, message, null, null);
     }
 
@@ -278,6 +378,85 @@ public class FirstFragment extends Fragment {
         mapIntent.setPackage("com.google.android.apps.maps");
         if (mapIntent.resolveActivity(requireContext().getPackageManager()) != null) {
             startActivity(mapIntent);
+        }
+    }
+
+    // ==== BLE: FidgetToy integration ====
+
+    private void startFidgetToyBleScanIfPermitted() {
+        if (getContext() == null) {
+            return;
+        }
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            // Android 12+: need BLUETOOTH_SCAN/CONNECT runtime permissions.
+            boolean hasScan = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.BLUETOOTH_SCAN)
+                    == PackageManager.PERMISSION_GRANTED;
+            boolean hasConnect = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.BLUETOOTH_CONNECT)
+                    == PackageManager.PERMISSION_GRANTED;
+            if (!hasScan || !hasConnect) {
+                requestPermissions(new String[]{
+                        Manifest.permission.BLUETOOTH_SCAN,
+                        Manifest.permission.BLUETOOTH_CONNECT
+                }, PERMISSION_REQUEST_BLE);
+                return;
+            }
+        } else {
+            // Pre-Android 12: location is required for BLE scans on many devices.
+            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_REQUEST_BLE);
+                return;
+            }
+        }
+
+        if (isScanningBle) return;
+
+        BluetoothManager bluetoothManager = (BluetoothManager) requireContext().getSystemService(android.content.Context.BLUETOOTH_SERVICE);
+        BluetoothAdapter adapter = bluetoothManager != null ? bluetoothManager.getAdapter() : null;
+        if (adapter == null || !adapter.isEnabled()) {
+            // Bluetooth is off or unavailable.
+            return;
+        }
+
+        bleScanner = adapter.getBluetoothLeScanner();
+        if (bleScanner == null) return;
+
+        ScanFilter filter = new ScanFilter.Builder()
+                .setDeviceName(FIDGET_DEVICE_NAME)
+                .build();
+        ScanSettings settings = new ScanSettings.Builder()
+                .setScanMode(ScanSettings.SCAN_MODE_LOW_POWER)
+                .build();
+
+        bleScanner.startScan(java.util.Collections.singletonList(filter), settings, fidgetScanCallback);
+        isScanningBle = true;
+    }
+
+    private void stopFidgetToyBleScan() {
+        if (bleScanner != null && isScanningBle) {
+            bleScanner.stopScan(fidgetScanCallback);
+        }
+        isScanningBle = false;
+    }
+
+    private void connectToFidgetToy(BluetoothDevice device) {
+        if (getContext() == null) return;
+        if (bluetoothGatt != null) {
+            bluetoothGatt.close();
+            bluetoothGatt = null;
+        }
+        bluetoothGatt = device.connectGatt(requireContext(), false, fidgetGattCallback);
+    }
+
+    private void handleFidgetToyMessage(String message) {
+        if (message.contains("safe")) {
+            // Normal state; no action.
+            return;
+        } else if (message.contains("warn")) {
+            sendAlertSms(getString(R.string.ble_warn_sms));
+        } else if (message.contains("emergency")) {
+            sendAlertSms(getString(R.string.ble_emergency_sms));
         }
     }
 
@@ -294,15 +473,18 @@ public class FirstFragment extends Fragment {
             }
         } else if (requestCode == PERMISSION_REQUEST_SEND_SMS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
-                    && pendingSmsAlertDb != null) {
-                double value = pendingSmsAlertDb;
-                pendingSmsAlertDb = null;
+                    && pendingSmsText != null) {
+                String text = pendingSmsText;
+                pendingSmsText = null;
                 // Permission just granted; actually send the SMS.
-                sendHighVolumeSms(value);
+                sendAlertSms(text);
             } else {
                 // Permission denied or no pending value; clear state.
-                pendingSmsAlertDb = null;
+                pendingSmsText = null;
             }
+        } else if (requestCode == PERMISSION_REQUEST_BLE) {
+            // Retry starting BLE scan after permissions.
+            startFidgetToyBleScanIfPermitted();
         }
     }
 

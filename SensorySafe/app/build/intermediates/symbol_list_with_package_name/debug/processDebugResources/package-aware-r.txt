@@ -3102,6 +3102,7 @@ id CTRL
 id FUNCTION
 id FirstFragment
 id META
+id MeterDetailFragment
 id NO_DEBUG
 id SHIFT
 id SHOW_ALL
@@ -3148,6 +3149,7 @@ id accessibility_custom_action_9
 id actionDown
 id actionDownUp
 id actionUp
+id action_FirstFragment_to_MeterDetailFragment
 id action_FirstFragment_to_SecondFragment
 id action_SecondFragment_to_FirstFragment
 id action_bar
@@ -3570,9 +3572,12 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id text_category
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
+id text_last_level
+id text_title_meter
 id textinput_counter
 id textinput_error
 id textinput_helper_text
@@ -3586,6 +3591,7 @@ id textview_threshold_value
 id time
 id title
 id titleDividerNoCustom
+id title_sensorysafe
 id title_template
 id toggle
 id toolbar
@@ -3759,6 +3765,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_first
+layout fragment_meter_detail
 layout fragment_second
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
@@ -3858,6 +3865,8 @@ string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
 string automatic_alerter_label
+string ble_emergency_sms
+string ble_warn_sms
 string bottom_sheet_behavior
 string bottomsheet_action_collapse
 string bottomsheet_action_expand
@@ -3881,6 +3890,7 @@ string high_volume_channel_description
 string high_volume_channel_name
 string high_volume_notification_text
 string high_volume_notification_title
+string high_volume_sms_text
 string icon_content_description
 string item_view_role_description
 string lorem_ipsum
@@ -3925,6 +3935,13 @@ string material_timepicker_text_input_mode_description
 string measurement_initial
 string measurement_running
 string measurement_stopped
+string meter_category_danger
+string meter_category_loud
+string meter_category_noisy
+string meter_category_quiet
+string meter_detail_category_label
+string meter_detail_last_level
+string meter_detail_title
 string mtrl_badge_numberless_content_description
 string mtrl_checkbox_button_icon_path_checked
 string mtrl_checkbox_button_icon_path_group_name

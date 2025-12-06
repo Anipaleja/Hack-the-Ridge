@@ -22,6 +22,21 @@
     <string name="high_volume_notification_title">High noise level detected</string>
     <string name="high_volume_notification_text">Measured volume has exceeded your alert level (approx %.1f dB).</string>
     <string name="high_volume_sms_text">High noise level detected by SensorySafe (approx %1$.1f dB).</string>
+    <string name="ble_warn_sms">FidgetToy reports WARNING. Please check the environment.</string>
+    <string name="ble_emergency_sms">FidgetToy reports EMERGENCY. Immediate assistance may be needed.</string>
+
+    <!-- Library helper (person with flag icon) -->
+    <string name="library_helper_title">Nearest quiet space</string>
+    <string name="library_helper_below_threshold">Current sound level is below your alert threshold. Maps to the nearest library becomes available once the environment is too loud.</string>
+
+    <!-- Meter detail page -->
+    <string name="meter_detail_title">Decibel Meter</string>
+    <string name="meter_detail_last_level">Last measured level: %1$.1f dB</string>
+    <string name="meter_detail_category_label">Current category: %1$s</string>
+    <string name="meter_category_quiet">Quiet</string>
+    <string name="meter_category_noisy">Noisy</string>
+    <string name="meter_category_loud">Loud</string>
+    <string name="meter_category_danger">Danger</string>
 
     <!-- Alert threshold configuration -->
     <string name="set_your_own_title">Set your own</string>

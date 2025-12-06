@@ -59,6 +59,9 @@ public final class FragmentFirstBinding implements ViewBinding {
   public final TextView textviewFirst;
 
   @NonNull
+  public final TextView titleSensorysafe;
+
+  @NonNull
   public final View topBackground;
 
   @NonNull
@@ -70,7 +73,8 @@ public final class FragmentFirstBinding implements ViewBinding {
       @NonNull LinearLayout logoContainer, @NonNull ImageView logoIcon, @NonNull TextView logoText,
       @NonNull LinearLayout navMaps, @NonNull LinearLayout navMeter,
       @NonNull LinearLayout navThreshold, @NonNull TextView textviewFirst,
-      @NonNull View topBackground, @NonNull ConstraintLayout topBar) {
+      @NonNull TextView titleSensorysafe, @NonNull View topBackground,
+      @NonNull ConstraintLayout topBar) {
     this.rootView = rootView;
     this.bottomBackground = bottomBackground;
     this.bottomNav = bottomNav;
@@ -84,6 +88,7 @@ public final class FragmentFirstBinding implements ViewBinding {
     this.navMeter = navMeter;
     this.navThreshold = navThreshold;
     this.textviewFirst = textviewFirst;
+    this.titleSensorysafe = titleSensorysafe;
     this.topBackground = topBackground;
     this.topBar = topBar;
   }
@@ -187,6 +192,12 @@ public final class FragmentFirstBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.title_sensorysafe;
+      TextView titleSensorysafe = ViewBindings.findChildViewById(rootView, id);
+      if (titleSensorysafe == null) {
+        break missingId;
+      }
+
       id = R.id.top_background;
       View topBackground = ViewBindings.findChildViewById(rootView, id);
       if (topBackground == null) {
@@ -201,7 +212,7 @@ public final class FragmentFirstBinding implements ViewBinding {
 
       return new FragmentFirstBinding((ConstraintLayout) rootView, bottomBackground, bottomNav,
           buttonFirst, buttonMenu, diagonalOverlay, logoContainer, logoIcon, logoText, navMaps,
-          navMeter, navThreshold, textviewFirst, topBackground, topBar);
+          navMeter, navThreshold, textviewFirst, titleSensorysafe, topBackground, topBar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

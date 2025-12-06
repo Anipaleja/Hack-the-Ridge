@@ -60,16 +60,16 @@
         "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
+        "merged": "com.example.sensorysafe.app-debug-43:/layout_fragment_meter_detail.xml.flat",
+        "source": "com.example.sensorysafe.app-main-45:/layout/fragment_meter_detail.xml"
+    },
+    {
         "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/drawable_measurement_button_background.xml.flat",
         "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/drawable/measurement_button_background.xml"
     },
     {
         "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/xml_data_extraction_rules.xml.flat",
         "source": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-main-45:/xml/data_extraction_rules.xml"
-    },
-    {
-        "merged": "com.example.sensorysafe.app-debug-43:/layout_fragment_second.xml.flat",
-        "source": "com.example.sensorysafe.app-main-45:/layout/fragment_second.xml"
     },
     {
         "merged": "/Users/lucaswang/.gradle/daemon/8.13/com.example.sensorysafe.app-debug-43:/mipmap-hdpi_ic_launcher_round.webp.flat",
