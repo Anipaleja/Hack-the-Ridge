@@ -11,6 +11,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <string name="action_settings">Settings</string>
     <string name="app_name">SensorySafe</string>
+    <string name="automatic_alerter_label">Automatic Alerter threshold</string>
     <string name="current_level_db">Current level: %1$.1f dB (relative)</string>
     <string name="first_fragment_label">First Fragment</string>
     <string name="high_volume_channel_description">Alerts when ambient sound exceeds the configured threshold (around 60 dB).</string>
@@ -59,9 +60,12 @@
     <string name="next">Next</string>
     <string name="permission_denied">Microphone permission denied. Enable it in system settings to measure sound level.</string>
     <string name="previous">Previous</string>
+    <string name="save_now">Save now</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="set_your_own_title">Set your own</string>
     <string name="start_measuring">Start measuring</string>
     <string name="stop_measuring">Stop measuring</string>
+    <string name="threshold_display_value">Alert at approximately %1$.0f dB</string>
     <style name="Base.Theme.SensorySafe" parent="Theme.Material3.DayNight.NoActionBar">
         
         

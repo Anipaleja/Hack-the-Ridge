@@ -29,8 +29,11 @@ id logo_icon
 id logo_text
 id nav_graph
 id nav_host_fragment_content_main
+id slider_alert_threshold
 id textview_first
-id textview_second
+id textview_set_your_own
+id textview_threshold_label
+id textview_threshold_value
 id toolbar
 id top_background
 id top_bar
@@ -44,6 +47,7 @@ mipmap ic_launcher_round
 navigation nav_graph
 string action_settings
 string app_name
+string automatic_alerter_label
 string current_level_db
 string first_fragment_label
 string high_volume_channel_description
@@ -57,9 +61,12 @@ string measurement_stopped
 string next
 string permission_denied
 string previous
+string save_now
 string second_fragment_label
+string set_your_own_title
 string start_measuring
 string stop_measuring
+string threshold_display_value
 style Base.Theme.SensorySafe
 style Theme.SensorySafe
 xml backup_rules

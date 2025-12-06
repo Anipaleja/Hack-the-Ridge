@@ -8,34 +8,48 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.widget.NestedScrollView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.sensorysafe.R;
+import com.google.android.material.slider.Slider;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class FragmentSecondBinding implements ViewBinding {
   @NonNull
-  private final NestedScrollView rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final Button buttonSecond;
 
   @NonNull
-  public final TextView textviewSecond;
+  public final Slider sliderAlertThreshold;
 
-  private FragmentSecondBinding(@NonNull NestedScrollView rootView, @NonNull Button buttonSecond,
-      @NonNull TextView textviewSecond) {
+  @NonNull
+  public final TextView textviewSetYourOwn;
+
+  @NonNull
+  public final TextView textviewThresholdLabel;
+
+  @NonNull
+  public final TextView textviewThresholdValue;
+
+  private FragmentSecondBinding(@NonNull ConstraintLayout rootView, @NonNull Button buttonSecond,
+      @NonNull Slider sliderAlertThreshold, @NonNull TextView textviewSetYourOwn,
+      @NonNull TextView textviewThresholdLabel, @NonNull TextView textviewThresholdValue) {
     this.rootView = rootView;
     this.buttonSecond = buttonSecond;
-    this.textviewSecond = textviewSecond;
+    this.sliderAlertThreshold = sliderAlertThreshold;
+    this.textviewSetYourOwn = textviewSetYourOwn;
+    this.textviewThresholdLabel = textviewThresholdLabel;
+    this.textviewThresholdValue = textviewThresholdValue;
   }
 
   @Override
   @NonNull
-  public NestedScrollView getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -66,13 +80,32 @@ public final class FragmentSecondBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.textview_second;
-      TextView textviewSecond = ViewBindings.findChildViewById(rootView, id);
-      if (textviewSecond == null) {
+      id = R.id.slider_alert_threshold;
+      Slider sliderAlertThreshold = ViewBindings.findChildViewById(rootView, id);
+      if (sliderAlertThreshold == null) {
         break missingId;
       }
 
-      return new FragmentSecondBinding((NestedScrollView) rootView, buttonSecond, textviewSecond);
+      id = R.id.textview_set_your_own;
+      TextView textviewSetYourOwn = ViewBindings.findChildViewById(rootView, id);
+      if (textviewSetYourOwn == null) {
+        break missingId;
+      }
+
+      id = R.id.textview_threshold_label;
+      TextView textviewThresholdLabel = ViewBindings.findChildViewById(rootView, id);
+      if (textviewThresholdLabel == null) {
+        break missingId;
+      }
+
+      id = R.id.textview_threshold_value;
+      TextView textviewThresholdValue = ViewBindings.findChildViewById(rootView, id);
+      if (textviewThresholdValue == null) {
+        break missingId;
+      }
+
+      return new FragmentSecondBinding((ConstraintLayout) rootView, buttonSecond,
+          sliderAlertThreshold, textviewSetYourOwn, textviewThresholdLabel, textviewThresholdValue);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
