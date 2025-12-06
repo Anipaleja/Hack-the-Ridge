@@ -61,6 +61,8 @@ string automatic_alerter_label
 string ble_emergency_sms
 string ble_warn_sms
 string current_level_db
+string fidget_connected_message
+string fidget_connected_title
 string first_fragment_label
 string high_volume_channel_description
 string high_volume_channel_name

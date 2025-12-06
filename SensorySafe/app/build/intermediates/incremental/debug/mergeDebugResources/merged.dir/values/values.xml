@@ -2011,6 +2011,8 @@
     <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
     <string name="fab_transformation_scrim_behavior" translatable="false">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
     <string name="fab_transformation_sheet_behavior" translatable="false">com.google.android.material.transformation.FabTransformationSheetBehavior</string>
+    <string name="fidget_connected_message">fidget toy connection is now established</string>
+    <string name="fidget_connected_title">FidgetToy Connected</string>
     <string name="first_fragment_label">First Fragment</string>
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
     <string name="high_volume_channel_description">Alerts when ambient sound exceeds the configured threshold (around 40 dB by default).</string>

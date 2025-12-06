@@ -16,6 +16,8 @@
     <string name="ble_emergency_sms">FidgetToy reports EMERGENCY. Immediate assistance may be needed.</string>
     <string name="ble_warn_sms">FidgetToy reports WARNING. Please check the environment.</string>
     <string name="current_level_db">Current level: %1$.1f dB</string>
+    <string name="fidget_connected_message">fidget toy connection is now established</string>
+    <string name="fidget_connected_title">FidgetToy Connected</string>
     <string name="first_fragment_label">First Fragment</string>
     <string name="high_volume_channel_description">Alerts when ambient sound exceeds the configured threshold (around 40 dB by default).</string>
     <string name="high_volume_channel_name">High volume alerts</string>

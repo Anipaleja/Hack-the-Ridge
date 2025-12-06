@@ -82,6 +82,9 @@ public class FirstFragment extends Fragment {
         @Override
         public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
             if (newState == BluetoothGatt.STATE_CONNECTED) {
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(() -> showFidgetConnectedPopup());
+                }
                 gatt.discoverServices();
             } else if (newState == BluetoothGatt.STATE_DISCONNECTED) {
                 bluetoothGatt = null;
@@ -474,6 +477,17 @@ public class FirstFragment extends Fragment {
         } else if (message.contains("emergency")) {
             sendAlertSms(getString(R.string.ble_emergency_sms));
         }
+    }
+
+    private void showFidgetConnectedPopup() {
+        if (getContext() == null) {
+            return;
+        }
+        new AlertDialog.Builder(requireContext())
+                .setTitle(R.string.fidget_connected_title)
+                .setMessage(R.string.fidget_connected_message)
+                .setPositiveButton(android.R.string.ok, null)
+                .show();
     }
 
     @Override

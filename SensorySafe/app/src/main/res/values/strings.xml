@@ -25,7 +25,11 @@
     <string name="ble_warn_sms">FidgetToy reports WARNING. Please check the environment.</string>
     <string name="ble_emergency_sms">FidgetToy reports EMERGENCY. Immediate assistance may be needed.</string>
 
-    <!-- Library helper (person with flag icon) -->
+    <!-- FidgetToy connection popup -->
+    <string name="fidget_connected_title">FidgetToy Connected</string>
+    <string name="fidget_connected_message">fidget toy connection is now established</string>
+
+    <!-- Meter detail page -->
     <string name="library_helper_title">Nearest quiet space</string>
     <string name="library_helper_below_threshold">Current sound level is below your alert threshold. Maps to the nearest library becomes available once the environment is too loud.</string>
 

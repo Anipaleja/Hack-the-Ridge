@@ -3883,6 +3883,8 @@ int string error_icon_content_description 0x7f11002d
 int string exposed_dropdown_menu_content_description 0x7f11002e
 int string fab_transformation_scrim_behavior 0x7f11002f
 int string fab_transformation_sheet_behavior 0x7f110030
+int string fidget_connected_message 0x7f1100c5
+int string fidget_connected_title 0x7f1100c6
 int string first_fragment_label 0x7f110031
 int string hide_bottom_view_on_scroll_behavior 0x7f110032
 int string high_volume_channel_description 0x7f110033
