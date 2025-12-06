@@ -29,6 +29,9 @@ id logo_icon
 id logo_text
 id nav_graph
 id nav_host_fragment_content_main
+id nav_maps
+id nav_meter
+id nav_threshold
 id slider_alert_threshold
 id textview_first
 id textview_set_your_own

@@ -21,6 +21,7 @@
     <string name="high_volume_channel_description">Alerts when ambient sound exceeds the configured threshold (around 40 dB by default).</string>
     <string name="high_volume_notification_title">High noise level detected</string>
     <string name="high_volume_notification_text">Measured volume has exceeded your alert level (approx %.1f dB).</string>
+    <string name="high_volume_sms_text">High noise level detected by SensorySafe (approx %1$.1f dB).</string>
 
     <!-- Alert threshold configuration -->
     <string name="set_your_own_title">Set your own</string>

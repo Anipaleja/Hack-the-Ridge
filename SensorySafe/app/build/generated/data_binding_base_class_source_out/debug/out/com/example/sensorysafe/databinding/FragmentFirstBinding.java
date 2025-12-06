@@ -47,6 +47,15 @@ public final class FragmentFirstBinding implements ViewBinding {
   public final TextView logoText;
 
   @NonNull
+  public final LinearLayout navMaps;
+
+  @NonNull
+  public final LinearLayout navMeter;
+
+  @NonNull
+  public final LinearLayout navThreshold;
+
+  @NonNull
   public final TextView textviewFirst;
 
   @NonNull
@@ -59,8 +68,9 @@ public final class FragmentFirstBinding implements ViewBinding {
       @NonNull LinearLayout bottomNav, @NonNull ImageButton buttonFirst,
       @NonNull ImageButton buttonMenu, @NonNull View diagonalOverlay,
       @NonNull LinearLayout logoContainer, @NonNull ImageView logoIcon, @NonNull TextView logoText,
-      @NonNull TextView textviewFirst, @NonNull View topBackground,
-      @NonNull ConstraintLayout topBar) {
+      @NonNull LinearLayout navMaps, @NonNull LinearLayout navMeter,
+      @NonNull LinearLayout navThreshold, @NonNull TextView textviewFirst,
+      @NonNull View topBackground, @NonNull ConstraintLayout topBar) {
     this.rootView = rootView;
     this.bottomBackground = bottomBackground;
     this.bottomNav = bottomNav;
@@ -70,6 +80,9 @@ public final class FragmentFirstBinding implements ViewBinding {
     this.logoContainer = logoContainer;
     this.logoIcon = logoIcon;
     this.logoText = logoText;
+    this.navMaps = navMaps;
+    this.navMeter = navMeter;
+    this.navThreshold = navThreshold;
     this.textviewFirst = textviewFirst;
     this.topBackground = topBackground;
     this.topBar = topBar;
@@ -150,6 +163,24 @@ public final class FragmentFirstBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.nav_maps;
+      LinearLayout navMaps = ViewBindings.findChildViewById(rootView, id);
+      if (navMaps == null) {
+        break missingId;
+      }
+
+      id = R.id.nav_meter;
+      LinearLayout navMeter = ViewBindings.findChildViewById(rootView, id);
+      if (navMeter == null) {
+        break missingId;
+      }
+
+      id = R.id.nav_threshold;
+      LinearLayout navThreshold = ViewBindings.findChildViewById(rootView, id);
+      if (navThreshold == null) {
+        break missingId;
+      }
+
       id = R.id.textview_first;
       TextView textviewFirst = ViewBindings.findChildViewById(rootView, id);
       if (textviewFirst == null) {
@@ -169,8 +200,8 @@ public final class FragmentFirstBinding implements ViewBinding {
       }
 
       return new FragmentFirstBinding((ConstraintLayout) rootView, bottomBackground, bottomNav,
-          buttonFirst, buttonMenu, diagonalOverlay, logoContainer, logoIcon, logoText,
-          textviewFirst, topBackground, topBar);
+          buttonFirst, buttonMenu, diagonalOverlay, logoContainer, logoIcon, logoText, navMaps,
+          navMeter, navThreshold, textviewFirst, topBackground, topBar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

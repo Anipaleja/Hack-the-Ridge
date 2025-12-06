@@ -7,6 +7,7 @@ import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,15 +26,19 @@ public class FirstFragment extends Fragment {
 
     private static final int SAMPLE_RATE = 44100;
     private static final int PERMISSION_REQUEST_RECORD_AUDIO = 1001;
+    private static final int PERMISSION_REQUEST_SEND_SMS = 1002;
     // Default threshold in the same relative 0-100 scale used below.
     // The actual value used at runtime is loaded from AlertSettings.
     private static final double DEFAULT_ALERT_DB_THRESHOLD = AlertSettings.DEFAULT_ALERT_THRESHOLD_RELATIVE_DB;
+
+    private static final String ALERT_PHONE_NUMBER = "6478233878"; // 647-823-3878
 
     private FragmentFirstBinding binding;
     private AudioRecord audioRecord;
     private Thread recordingThread;
     private boolean isMeasuring = false;
     private boolean hasAlertedHighVolume = false;
+    private Double pendingSmsAlertDb = null;
 
     @Override
     public View onCreateView(
@@ -51,7 +56,6 @@ public class FirstFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.textviewFirst.setText(R.string.measurement_initial);
-        binding.buttonFirst.setText(R.string.start_measuring);
 
         binding.buttonFirst.setOnClickListener(v -> {
             if (isMeasuring) {
@@ -116,7 +120,6 @@ public class FirstFragment extends Fragment {
 
         isMeasuring = true;
         hasAlertedHighVolume = false;
-        binding.buttonFirst.setText(R.string.stop_measuring);
         binding.textviewFirst.setText(R.string.measurement_running);
 
         // Load the current user-configured alert threshold once for this measurement session.
@@ -182,7 +185,6 @@ public class FirstFragment extends Fragment {
         }
 
         if (binding != null) {
-            binding.buttonFirst.setText(R.string.start_measuring);
             binding.textviewFirst.setText(R.string.measurement_stopped);
         }
     }
@@ -206,7 +208,11 @@ public class FirstFragment extends Fragment {
         AlertDialog dialog = new AlertDialog.Builder(requireContext())
                 .setTitle(getString(R.string.high_volume_notification_title))
                 .setMessage(getString(R.string.high_volume_notification_text, approxDb))
-                .setPositiveButton(android.R.string.ok, (d, which) -> d.dismiss())
+                .setPositiveButton(android.R.string.ok, (d, which) -> {
+                    d.dismiss();
+                    // After the user dismisses the popup, send an SMS alert.
+                    sendHighVolumeSms(approxDb);
+                })
                 .setCancelable(false)
                 .create();
         dialog.show();
@@ -247,6 +253,25 @@ public class FirstFragment extends Fragment {
         notificationManager.notify(1, builder.build());
     }
 
+    private void sendHighVolumeSms(double approxDb) {
+        if (getContext() == null) {
+            return;
+        }
+
+        // Check runtime SEND_SMS permission.
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Remember this value so we can send after the user grants permission.
+            pendingSmsAlertDb = approxDb;
+            requestPermissions(new String[]{Manifest.permission.SEND_SMS}, PERMISSION_REQUEST_SEND_SMS);
+            return;
+        }
+
+        SmsManager smsManager = SmsManager.getDefault();
+        String message = getString(R.string.high_volume_sms_text, approxDb);
+        smsManager.sendTextMessage(ALERT_PHONE_NUMBER, null, message, null, null);
+    }
+
     private void openMapsForLibraries() {
         Uri gmmIntentUri = Uri.parse("geo:0,0?q=library");
         android.content.Intent mapIntent = new android.content.Intent(android.content.Intent.ACTION_VIEW, gmmIntentUri);
@@ -266,6 +291,17 @@ public class FirstFragment extends Fragment {
                 startMeasuring();
             } else if (binding != null) {
                 binding.textviewFirst.setText(R.string.permission_denied);
+            }
+        } else if (requestCode == PERMISSION_REQUEST_SEND_SMS) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && pendingSmsAlertDb != null) {
+                double value = pendingSmsAlertDb;
+                pendingSmsAlertDb = null;
+                // Permission just granted; actually send the SMS.
+                sendHighVolumeSms(value);
+            } else {
+                // Permission denied or no pending value; clear state.
+                pendingSmsAlertDb = null;
             }
         }
     }
