@@ -136,6 +136,18 @@ public class FirstFragment extends Fragment {
 
         binding.textviewFirst.setText(R.string.measurement_initial);
 
+        // Toggle app theme between light and dark when the top-right menu icon is pressed.
+        binding.buttonMenu.setOnClickListener(v -> {
+            int current = androidx.appcompat.app.AppCompatDelegate.getDefaultNightMode();
+            if (current == androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES) {
+                androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(
+                        androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO);
+            } else {
+                androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(
+                        androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES);
+            }
+        });
+
         binding.buttonFirst.setOnClickListener(v -> {
             if (isMeasuring) {
                 stopMeasuring();

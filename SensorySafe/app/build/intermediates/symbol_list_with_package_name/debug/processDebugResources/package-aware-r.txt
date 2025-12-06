@@ -2104,6 +2104,7 @@ color sensory_button_inner
 color sensory_button_outer
 color sensory_light_grey
 color sensory_primary_blue
+color sensory_text_primary
 color sensory_topbar_grey
 color switch_thumb_disabled_material_dark
 color switch_thumb_disabled_material_light
@@ -3572,6 +3573,7 @@ id textSpacerNoTitle
 id textStart
 id textTop
 id text_category
+id text_home_title
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
@@ -3889,6 +3891,7 @@ string high_volume_channel_name
 string high_volume_notification_text
 string high_volume_notification_title
 string high_volume_sms_text
+string home_title_sensorysound
 string icon_content_description
 string item_view_role_description
 string library_helper_below_threshold

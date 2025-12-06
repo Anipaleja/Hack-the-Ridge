@@ -16,4 +16,7 @@
     <!-- Measurement button colors (dark mode) -->
     <color name="sensory_button_outer">#DADCF0</color>
     <color name="sensory_button_inner">#C7CAE6</color>
+
+    <!-- Text color that adapts to light/dark -->
+    <color name="sensory_text_primary">#FFFFFFFF</color>
 </resources>

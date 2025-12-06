@@ -2103,6 +2103,7 @@ int color sensory_button_inner 0x7f0502df
 int color sensory_button_outer 0x7f0502e0
 int color sensory_light_grey 0x7f0502e1
 int color sensory_primary_blue 0x7f0502e2
+int color sensory_text_primary 0x7f0502ed
 int color sensory_topbar_grey 0x7f0502e3
 int color switch_thumb_disabled_material_dark 0x7f0502e4
 int color switch_thumb_disabled_material_light 0x7f0502e5
@@ -3571,6 +3572,7 @@ int id textSpacerNoTitle 0x7f0801d8
 int id textStart 0x7f0801d9
 int id textTop 0x7f0801da
 int id text_category 0x7f080215
+int id text_home_title 0x7f080219
 int id text_input_end_icon 0x7f0801db
 int id text_input_error_icon 0x7f0801dc
 int id text_input_start_icon 0x7f0801dd
@@ -3888,6 +3890,7 @@ int string high_volume_channel_name 0x7f110034
 int string high_volume_notification_text 0x7f110035
 int string high_volume_notification_title 0x7f110036
 int string high_volume_sms_text 0x7f1100b8
+int string home_title_sensorysound 0x7f1100c4
 int string icon_content_description 0x7f110037
 int string item_view_role_description 0x7f110038
 int string library_helper_below_threshold 0x7f1100c2

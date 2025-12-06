@@ -31,6 +31,9 @@
 
     <!-- Meter detail page -->
     <string name="meter_detail_title">Decibel Meter</string>
+
+    <!-- Home title above nav bar -->
+    <string name="home_title_sensorysound">SensorySound</string>
     <string name="meter_detail_last_level">Last measured level: %1$.1f dB</string>
     <string name="meter_detail_category_label">Current category: %1$s</string>
     <string name="meter_category_quiet">Quiet</string>

@@ -53,6 +53,9 @@ public final class FragmentFirstBinding implements ViewBinding {
   public final LinearLayout navThreshold;
 
   @NonNull
+  public final TextView textHomeTitle;
+
+  @NonNull
   public final TextView textviewFirst;
 
   @NonNull
@@ -66,8 +69,9 @@ public final class FragmentFirstBinding implements ViewBinding {
       @NonNull ImageButton buttonMenu, @NonNull View diagonalOverlay,
       @NonNull LinearLayout logoContainer, @NonNull ImageView logoIcon,
       @NonNull LinearLayout navLibraryHelper, @NonNull LinearLayout navMeter,
-      @NonNull LinearLayout navThreshold, @NonNull TextView textviewFirst,
-      @NonNull View topBackground, @NonNull ConstraintLayout topBar) {
+      @NonNull LinearLayout navThreshold, @NonNull TextView textHomeTitle,
+      @NonNull TextView textviewFirst, @NonNull View topBackground,
+      @NonNull ConstraintLayout topBar) {
     this.rootView = rootView;
     this.bottomBackground = bottomBackground;
     this.bottomNav = bottomNav;
@@ -79,6 +83,7 @@ public final class FragmentFirstBinding implements ViewBinding {
     this.navLibraryHelper = navLibraryHelper;
     this.navMeter = navMeter;
     this.navThreshold = navThreshold;
+    this.textHomeTitle = textHomeTitle;
     this.textviewFirst = textviewFirst;
     this.topBackground = topBackground;
     this.topBar = topBar;
@@ -171,6 +176,12 @@ public final class FragmentFirstBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.text_home_title;
+      TextView textHomeTitle = ViewBindings.findChildViewById(rootView, id);
+      if (textHomeTitle == null) {
+        break missingId;
+      }
+
       id = R.id.textview_first;
       TextView textviewFirst = ViewBindings.findChildViewById(rootView, id);
       if (textviewFirst == null) {
@@ -191,7 +202,7 @@ public final class FragmentFirstBinding implements ViewBinding {
 
       return new FragmentFirstBinding((ConstraintLayout) rootView, bottomBackground, bottomNav,
           buttonFirst, buttonMenu, diagonalOverlay, logoContainer, logoIcon, navLibraryHelper,
-          navMeter, navThreshold, textviewFirst, topBackground, topBar);
+          navMeter, navThreshold, textHomeTitle, textviewFirst, topBackground, topBar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

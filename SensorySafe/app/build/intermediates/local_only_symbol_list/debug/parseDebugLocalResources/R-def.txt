@@ -6,6 +6,7 @@ color sensory_button_inner
 color sensory_button_outer
 color sensory_light_grey
 color sensory_primary_blue
+color sensory_text_primary
 color sensory_topbar_grey
 color white
 dimen fab_margin
@@ -35,6 +36,7 @@ id nav_meter
 id nav_threshold
 id slider_alert_threshold
 id text_category
+id text_home_title
 id text_last_level
 id text_title_meter
 id textview_first
@@ -65,6 +67,7 @@ string high_volume_channel_name
 string high_volume_notification_text
 string high_volume_notification_title
 string high_volume_sms_text
+string home_title_sensorysound
 string library_helper_below_threshold
 string library_helper_title
 string lorem_ipsum

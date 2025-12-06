@@ -12,7 +12,7 @@
         android:id="@+id/top_bar"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:background="@color/sensory_topbar_grey"
+        android:background="@color/sensory_light_grey"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -36,20 +36,6 @@
                 android:contentDescription="@string/app_name"
                 android:scaleType="centerInside" />
         </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/button_menu"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@android:color/transparent"
-            android:padding="8dp"
-            android:src="@android:drawable/ic_menu_sort_by_size"
-            android:tint="@android:color/black"
-            android:contentDescription="Menu"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Top blue background area -->
@@ -57,7 +43,7 @@
         android:id="@+id/top_background"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/sensory_primary_blue"
+        android:background="@color/sensory_light_grey"
         app:layout_constraintTop_toBottomOf="@id/bottom_nav"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,16 +92,34 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="72dp"
         android:gravity="center"
         android:text="@string/measurement_initial"
-        android:textColor="@android:color/black"
+        android:textColor="@color/sensory_text_primary"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    <!-- Top navigation bar with page icons -->
+    <!-- Home title above nav bar -->
+    <TextView
+        android:id="@+id/text_home_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/home_title_sensorysound"
+        android:textColor="@color/sensory_text_primary"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:fontFamily="cursive"
+        app:layout_constraintTop_toBottomOf="@id/top_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Top navigation bar with page icons and theme toggle -->
     <LinearLayout
         android:id="@+id/bottom_nav"
         android:layout_width="0dp"
@@ -125,7 +129,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_bar">
+        app:layout_constraintTop_toBottomOf="@id/text_home_title">
 
         <!-- Library helper (person with flag) -->
         <LinearLayout
@@ -154,9 +158,9 @@
             <ImageView
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-                android:src="@android:drawable/ic_menu_view"
+                android:src="@android:drawable/ic_menu_compass"
                 android:tint="@android:color/black"
-                android:contentDescription="Decibel meter" />
+                android:contentDescription="Decibel level thermometer" />
         </LinearLayout>
 
         <!-- Threshold settings (gear icon) -->
@@ -174,6 +178,17 @@
                 android:tint="@android:color/black"
                 android:contentDescription="Alert threshold" />
         </LinearLayout>
+
+        <!-- Theme toggle (three lines icon) anchored to right of nav bar -->
+        <ImageButton
+            android:id="@+id/button_menu"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            android:src="@android:drawable/ic_menu_sort_by_size"
+            android:tint="@android:color/white"
+            android:contentDescription="Toggle theme" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
