@@ -137,6 +137,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
+            android:id="@+id/nav_maps"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -147,7 +148,7 @@
                 android:layout_height="28dp"
                 android:src="@android:drawable/ic_dialog_email"
                 android:tint="@android:color/black"
-                android:contentDescription="Messages" />
+                android:contentDescription="Maps" />
         </LinearLayout>
 
         <LinearLayout
@@ -165,6 +166,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/nav_meter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -175,7 +177,7 @@
                 android:layout_height="28dp"
                 android:src="@android:drawable/ic_menu_view"
                 android:tint="@android:color/black"
-                android:contentDescription="Home" />
+                android:contentDescription="Decibel meter" />
         </LinearLayout>
 
         <LinearLayout
@@ -193,6 +195,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/nav_threshold"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -203,7 +206,7 @@
                 android:layout_height="28dp"
                 android:src="@android:drawable/ic_menu_manage"
                 android:tint="@android:color/black"
-                android:contentDescription="Settings" />
+                android:contentDescription="Alert threshold" />
         </LinearLayout>
     </LinearLayout>
 

@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,8 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.appcompat.app.AlertDialog;
 
 import com.example.sensorysafe.databinding.FragmentFirstBinding;
 
@@ -57,6 +60,18 @@ public class FirstFragment extends Fragment {
                 startMeasuring();
             }
         });
+
+        // Bottom navigation: maps, meter (current), and threshold settings.
+        binding.navMaps.setOnClickListener(v -> openMapsForLibraries());
+
+        binding.navMeter.setOnClickListener(v -> {
+            // Already on the meter screen; no navigation needed for now.
+            // Could scroll to top or provide feedback if desired.
+        });
+
+        binding.navThreshold.setOnClickListener(v ->
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_SecondFragment));
     }
 
     private void startMeasuring() {
@@ -133,8 +148,10 @@ public class FirstFragment extends Fragment {
                         if (getActivity() != null) {
                             getActivity().runOnUiThread(() -> {
                                 if (binding != null) {
+                                    // Clamp the displayed value to a friendly 0-100 range so it never shows negatives.
+                                    double displayDb = Math.max(0.0, Math.min(100.0, relativeDb));
                                     binding.textviewFirst.setText(
-                                            getString(R.string.current_level_db, db)
+                                            getString(R.string.current_level_db, displayDb)
                                     );
                                 }
                             });
@@ -182,14 +199,39 @@ public class FirstFragment extends Fragment {
             return;
         }
 
-        double approxDb = relativeDb; // relative scale; labelled as 60 dB threshold in UI
+        // Clamp to 0-100 range for display so users never see negative values.
+        double approxDb = Math.max(0.0, Math.min(100.0, relativeDb));
 
+        // 1) In-app popup dialog that must be acknowledged.
+        AlertDialog dialog = new AlertDialog.Builder(requireContext())
+                .setTitle(getString(R.string.high_volume_notification_title))
+                .setMessage(getString(R.string.high_volume_notification_text, approxDb))
+                .setPositiveButton(android.R.string.ok, (d, which) -> d.dismiss())
+                .setCancelable(false)
+                .create();
+        dialog.show();
+
+        // 2) Optional system notification so the user is also alerted if the app is backgrounded.
         NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), MainActivity.HIGH_VOLUME_CHANNEL_ID)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(getString(R.string.high_volume_notification_title))
                 .setContentText(getString(R.string.high_volume_notification_text, approxDb))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setAutoCancel(true);
+
+        // Use the Google Maps intent API to show nearby libraries when the user taps the alert.
+        Uri gmmIntentUri = Uri.parse("geo:0,0?q=library");
+        android.content.Intent mapIntent = new android.content.Intent(android.content.Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        android.app.PendingIntent pendingIntent = android.app.PendingIntent.getActivity(
+                requireContext(),
+                0,
+                mapIntent,
+                android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M
+                        ? android.app.PendingIntent.FLAG_UPDATE_CURRENT | android.app.PendingIntent.FLAG_IMMUTABLE
+                        : android.app.PendingIntent.FLAG_UPDATE_CURRENT
+        );
+        builder.setContentIntent(pendingIntent);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(requireContext());
 
@@ -203,6 +245,15 @@ public class FirstFragment extends Fragment {
         }
 
         notificationManager.notify(1, builder.build());
+    }
+
+    private void openMapsForLibraries() {
+        Uri gmmIntentUri = Uri.parse("geo:0,0?q=library");
+        android.content.Intent mapIntent = new android.content.Intent(android.content.Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(requireContext().getPackageManager()) != null) {
+            startActivity(mapIntent);
+        }
     }
 
     @Override

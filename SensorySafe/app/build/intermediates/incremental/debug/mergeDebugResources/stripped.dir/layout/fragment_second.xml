@@ -48,9 +48,6 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:stepSize="1"
-        app:valueFrom="61"
-        app:valueTo="100"
-        app:value="80"
         app:layout_constraintTop_toBottomOf="@id/textview_threshold_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

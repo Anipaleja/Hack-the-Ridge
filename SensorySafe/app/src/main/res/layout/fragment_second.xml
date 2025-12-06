@@ -39,7 +39,7 @@
         app:layout_constraintTop_toBottomOf="@id/textview_set_your_own"
         app:layout_constraintStart_toStartOf="@id/textview_set_your_own" />
 
-    <!-- Slider for alert threshold (61-100 relative dB) -->
+    <!-- Slider for alert threshold (40-100 relative dB) -->
     <com.google.android.material.slider.Slider
         android:id="@+id/slider_alert_threshold"
         android:layout_width="0dp"
@@ -48,9 +48,9 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:stepSize="1"
-        app:valueFrom="61"
+        app:valueFrom="40"
         app:valueTo="100"
-        app:value="80"
+        app:value="40"
         app:layout_constraintTop_toBottomOf="@id/textview_threshold_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

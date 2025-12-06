@@ -11,8 +11,8 @@ public final class AlertSettings {
     private static final String PREFS_NAME = "sensorysafe_prefs";
     private static final String KEY_ALERT_THRESHOLD_RELATIVE_DB = "alert_threshold_relative_db";
 
-    // Default threshold on the relative 0-100 scale used in FirstFragment (approx -40 dBFS).
-    public static final double DEFAULT_ALERT_THRESHOLD_RELATIVE_DB = 60.0;
+    // Default threshold on the relative 0-100 scale used in FirstFragment (~40 dB on your UI).
+    public static final double DEFAULT_ALERT_THRESHOLD_RELATIVE_DB = 40.0;
 
     private AlertSettings() {
         // no-op

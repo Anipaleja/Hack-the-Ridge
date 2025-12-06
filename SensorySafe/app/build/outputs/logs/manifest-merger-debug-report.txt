@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:2:1-28:12
-INJECTED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:2:1-28:12
-INJECTED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:2:1-28:12
-INJECTED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:2:1-28:12
+ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:2:1-31:12
+INJECTED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:2:1-31:12
+INJECTED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:2:1-31:12
+INJECTED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:2:1-31:12
 MERGED from [androidx.databinding:viewbinding:8.13.1] /Users/lucaswang/.gradle/caches/8.13/transforms/17b4eefc9020d88d43dfeabde2891978/transformed/viewbinding-8.13.1/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-common:2.6.0] /Users/lucaswang/.gradle/caches/8.13/transforms/108fa4c88081f1a29718324089ce9ed2/transformed/navigation-common-2.6.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-runtime:2.6.0] /Users/lucaswang/.gradle/caches/8.13/transforms/cc7728ebbf169ffbbea0e643cf086d75/transformed/navigation-runtime-2.6.0/AndroidManifest.xml:17:1-22:12
@@ -72,9 +72,15 @@ uses-permission#android.permission.RECORD_AUDIO
 ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:5:5-71
 	android:name
 		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:5:22-68
+uses-permission#android.permission.POST_NOTIFICATIONS
+ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:6:5-8:32
+	tools:targetApi
+		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:8:9-29
+	android:name
+		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:7:9-61
 application
-ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:7:5-26:19
-INJECTED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:7:5-26:19
+ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:10:5-29:19
+INJECTED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:10:5-29:19
 MERGED from [com.google.android.material:material:1.10.0] /Users/lucaswang/.gradle/caches/8.13/transforms/da00f8aace1d8e771fd786ac650e1936/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.10.0] /Users/lucaswang/.gradle/caches/8.13/transforms/da00f8aace1d8e771fd786ac650e1936/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /Users/lucaswang/.gradle/caches/8.13/transforms/553c5c3c33f173d9e5c6a73ea4d81550/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
@@ -98,39 +104,39 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/lucaswang/.gradle/ca
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.9.0] /Users/lucaswang/.gradle/caches/8.13/transforms/7c23916309702cdbf95b61b331477860/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:14:9-35
+		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:17:9-35
 	android:label
-		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:12:9-41
+		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:15:9-41
 	android:fullBackupContent
-		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:10:9-54
-	android:roundIcon
 		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:13:9-54
+	android:roundIcon
+		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:16:9-54
 	android:icon
-		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:11:9-43
+		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:14:9-43
 	android:allowBackup
-		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:8:9-35
+		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:11:9-35
 	android:theme
-		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:15:9-49
+		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:18:9-49
 	android:dataExtractionRules
-		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:9:9-65
+		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:12:9-65
 activity#com.example.sensorysafe.MainActivity
-ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:16:9-25:20
+ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:19:9-28:20
 	android:exported
-		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:18:13-36
+		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:21:13-36
 	android:theme
-		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:19:13-53
+		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:22:13-53
 	android:name
-		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:17:13-41
+		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:20:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:20:13-24:29
+ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:23:13-27:29
 action#android.intent.action.MAIN
-ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:21:17-69
+ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:24:17-69
 	android:name
-		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:21:25-66
+		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:24:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:23:17-77
+ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:26:17-77
 	android:name
-		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:23:27-74
+		ADDED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml:26:27-74
 uses-sdk
 INJECTED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/lucaswang/StudioProjects/Hack-the-Ridge/SensorySafe/app/src/main/AndroidManifest.xml
